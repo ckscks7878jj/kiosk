@@ -24,16 +24,16 @@ public class Main {
             switch (choice) { // 조건문 활용
                 case 1:
                     System.out.println("선택하신 메뉴: " + first);
-                    break;
+                    continue;
                 case 2:
                     System.out.println("선택하신 메뉴: " + second);
-                    break;
+                    continue;
                 case 3:
                     System.out.println("선택하신 메뉴: " + third);
-                    break;
+                    continue;
                 case 4:
                     System.out.println("선택하신 메뉴: " + fourth);
-                    break;
+                    continue;
                 case 0:
                     System.out.println("프로그램을 종료합니다.");
                     break;

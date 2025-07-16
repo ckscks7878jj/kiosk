@@ -31,16 +31,16 @@ public class Main {
             switch (choice) { // 입력된 숫자에 따른 처리
                 case 1: // 선택한 메뉴 : 이름, 가격, 설명
                     System.out.println("선택하신 메뉴: 1. " + menuItems.get(0).name + " | w " + menuItems.get(0).price + " | " + menuItems.get(0).info);
-                    break;
+                    continue;
                 case 2:
                     System.out.println("선택하신 메뉴: 2. " + menuItems.get(1).name + " | w " + menuItems.get(1).price + " | " + menuItems.get(1).info);
-                    break;
+                    continue;
                 case 3:
                     System.out.println("선택하신 메뉴: 3. " + menuItems.get(2).name + " | w " + menuItems.get(2).price + " | " + menuItems.get(2).info);
-                    break;
+                    continue;
                 case 4:
                     System.out.println("선택하신 메뉴: 4. " + menuItems.get(3).name + " | w " + menuItems.get(3).price + " | " + menuItems.get(3).info);
-                    break;
+                    continue;
                 case 0:
                     System.out.println("프로그램을 종료합니다."); // 프로그램을 종료
                     break;
