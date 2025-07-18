@@ -1,19 +1,16 @@
 package org.example.challenge.lv1;
 
+import java.math.BigDecimal;
+
 public class MenuItem {
 
     private final String name;
-    private final double price;
-    private String info; // 메뉴 설명은 추후 변경이 가능하도록 final로 선언하지 않았다.
-
-    public MenuItem(String name, double price) {
-        this.name = name;
-        this.price = price;
-    }
+    private final BigDecimal price;
+    private final String info;
 
     public MenuItem(String name, double price, String info) {
             this.name = name;
-            this.price = price;
+            this.price = BigDecimal.valueOf(price);
             this.info = info;
     }
 
@@ -21,7 +18,7 @@ public class MenuItem {
         return name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
@@ -29,7 +26,4 @@ public class MenuItem {
         return info;
     }
 
-    public void setInfo(String newInfo) {
-        this.info = newInfo;
-    }
 }
