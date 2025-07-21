@@ -36,8 +36,13 @@ public class Main {
                 new MenuItem("ChickenBites",2.5,"한 입에 먹기 좋은 바삭한 치킨 바이트")
         );
         dessertItems.forEach(desserts::addMenuItem);
-
         menu.add(desserts);
+
+        Menu orders = new Menu("Orders");
+        menu.add(orders);
+
+        Menu cancel = new Menu("Cancel");
+        menu.add(cancel);
 
         Kiosk kiosk = new Kiosk(menu);
         kiosk.start();
