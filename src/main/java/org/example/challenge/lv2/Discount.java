@@ -21,28 +21,32 @@ public enum Discount {
         this.rate = BigDecimal.valueOf(rate);
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public String getDisplayRate() {
+        return displayRate;
+    }
+
     public BigDecimal getRate() {
         return rate;
     }
 
-    public static void printDiscount() { // 재사용성을 고려한 리팩토링이 필요해보인다.
+    public static void printDiscount() {
         System.out.println("\n할인 정보를 입력해주세요.");
-        System.out.println("1. " + VETERAN.type + " : " + VETERAN.displayRate);
-        System.out.println("2. " + SOLDIER.type + " : " + SOLDIER.displayRate);
-        System.out.println("3. " + STUDENT.type + " : " + STUDENT.displayRate);
-        System.out.println("4. " + REGULAR.type + " : " + REGULAR.displayRate);
+        int index = 1;
+        for (Discount discount : Discount.values()) {
+            System.out.println(index++ + ". " + discount.type + " : " + discount.displayRate);
+        }
     }
 
     public static BigDecimal applyDiscount(BigDecimal totalPrice, int selectedDiscount) {
-        if (selectedDiscount == 1) {
-            return totalPrice.subtract(totalPrice.multiply(VETERAN.getRate()));
+        if (selectedDiscount > 0 && selectedDiscount <= Discount.values().length) {
+            return totalPrice.subtract(totalPrice.multiply(Discount.values()[selectedDiscount - 1].getRate()));
+        } else {
+            throw new IllegalArgumentException("잘못된 번호를 입력하셨습니다.");
         }
-        if (selectedDiscount == 2) {
-            return totalPrice.subtract(totalPrice.multiply(SOLDIER.getRate()));
-        }
-        if (selectedDiscount == 3) {
-            return totalPrice.subtract(totalPrice.multiply(STUDENT.getRate()));
-        }
-        return totalPrice;
     }
+
 }

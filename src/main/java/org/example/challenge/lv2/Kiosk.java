@@ -129,12 +129,8 @@ public class Kiosk {
             if (finalChoice == 1) {
                 Discount.printDiscount();
                 int selectedDiscount = sc.nextInt();
-                if (selectedDiscount >= 1 && selectedDiscount <= 3) {
-                    totalPrice = Discount.applyDiscount(totalPrice, selectedDiscount);
-                } else if (selectedDiscount != 0){
-                    throw new IllegalArgumentException("잘못된 번호를 입력하셨습니다.");
-                }
-                System.out.println("\n주문이 완료되었습니다. 결제하실 금액은 W " + totalPrice + " 입니다.");
+                totalPrice = Discount.applyDiscount(totalPrice, selectedDiscount);
+                System.out.printf("\n주문이 완료되었습니다. 결제하실 금액은 W %.1f 입니다.\n", totalPrice);
                 cartItems.clear();
                 System.out.println("이용해주셔서 감사합니다.");
                 order = false;

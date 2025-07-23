@@ -1,6 +1,7 @@
 package org.example.challenge.lv2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -53,5 +54,6 @@ public class Main {
         // 키오스크 구동
         Kiosk kiosk = new Kiosk(menu);
         kiosk.start();
+
     }
 }
