@@ -1,7 +1,6 @@
-package org.example.challenge.lv2;
+package org.example.kiosk.challenge.lv2;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main {

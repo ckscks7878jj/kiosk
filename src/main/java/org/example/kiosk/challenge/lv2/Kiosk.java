@@ -1,4 +1,4 @@
-package org.example.challenge.lv2;
+package org.example.kiosk.challenge.lv2;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
