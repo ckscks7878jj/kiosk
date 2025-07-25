@@ -3,6 +3,7 @@ package org.example.kiosk.challenge.lv2;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
@@ -122,9 +123,10 @@ public class Kiosk {
             System.out.println("W " + totalPrice);
             System.out.println("\n1. 결제하기");
             System.out.println("2. 메뉴로 돌아가기");
-            System.out.println("3. 선택 취소");
+            System.out.println("3. 메뉴 취소하기");
 
             int finalChoice = sc.nextInt();
+            sc.nextLine(); // 입력 버퍼 클리어
 
             if (finalChoice == 1) {
                 Discount.printDiscount();
@@ -145,14 +147,19 @@ public class Kiosk {
                 IntStream.range(0, cartItems.size())
                         .forEach(index -> System.out.println((index + 1) + ". " + formatMenu(cartItems.get(index))));
 
-                System.out.println("\n주문에서 제외할 메뉴의 번호를 입력해주세요.");
-                int cancelMenu = sc.nextInt();
-                if (cancelMenu >= 1 && cancelMenu <= cartItems.size()) {
-                    System.out.println(cartItems.get(cancelMenu - 1).getName() + " 가 삭제되었습니다.");
-                    cartItems.remove(cancelMenu - 1);
+                System.out.println("\n제거할 메뉴의 이름을 입력해주세요.");
+                String cancelMenu = sc.nextLine();
+                Optional<MenuItem> itemToRemove = cartItems.stream()
+                        .filter(item -> item.getName().equalsIgnoreCase(cancelMenu))
+                        .findFirst();
+
+                if (itemToRemove.isPresent()) {
+                    cartItems.remove(itemToRemove.get());
+                    System.out.println(cancelMenu + " 메뉴가 삭제되었습니다.");
                 } else {
-                    throw new IllegalArgumentException("잘못된 번호를 입력하셨습니다.");
+                    System.out.println("해당 이름의 메뉴가 장바구니에 존재하지 않습니다.");
                 }
+
                 if (cartItems.isEmpty()) {
                     System.out.println("장바구니가 비어있습니다. 메인 화면으로 돌아갑니다.");
                     order = false;
